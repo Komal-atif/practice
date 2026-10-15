@@ -5,7 +5,7 @@ services:
     build: ./project
     image: master-image
     ports:
-      - 5000:5000
+      - 5035:5000
     command: gunicorn --workers 4 --bind 0.0.0.0:5000 --timeout 120 'server:create_app()'
     stdin_open: true
     tty: true
@@ -26,7 +26,7 @@ services:
   dashboard:
     image: master-image
     ports:
-      - 5555:5555
+      - 5535:5555
     depends_on:
       - redis
     command: rq-dashboard --port 5555 --redis-url redis://redis:6379/0
